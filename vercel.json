@@ -1,7 +1,22 @@
 {
-  "functions": {
-    "_render": {
-      "runtime": "nodejs20.x"
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@astrojs/vercel"
     }
-  }
+  ],
+  "functions": {
+    "api/**/*.ts": {
+      "runtime": "nodejs20.x",
+      "memory": 3008,
+      "maxDuration": 60
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    }
+  ]
 }
